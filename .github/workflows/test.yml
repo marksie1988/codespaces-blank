@@ -23,7 +23,7 @@ jobs:
       - name: Check folder
         run: pwd
       - name: Check files
-        run: ls -ltr
+        run: ls -ltr ./tests/docker_configs/sonarr
       - name: Inspect container
         run: docker inspect sonarr
       - name: 🧪 Check tests are passing
