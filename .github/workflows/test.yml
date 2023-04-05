@@ -21,7 +21,7 @@ jobs:
       - name: Run containers
         run: docker-compose -f .ci/docker-compose.yml up -d
       - name: Sleep for 1 min
-        run: sleep 60s
+        run: sleep 30s
         shell: bash
       - name: Add hosts
         run: |
@@ -31,7 +31,7 @@ jobs:
       - name: curl
         run: curl http://radarr:7878
       - name: check api key
-        run: docker-compose exec radarr ls -l
+        run: docker-compose exec radarr pwd
       - name: check local config
         run: cat tests/docker_configs/radarr/config.xml
       - name: Inspect container
