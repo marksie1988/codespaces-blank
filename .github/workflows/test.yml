@@ -23,7 +23,7 @@ jobs:
       - name: Inspect container
         run: docker inspect sonarr
       - name: Start shell in container
-        run: docker exec -it sonarr ls -l /config/config.xml
+        run: docker exec -it sonarr cat /config/config.xml
       - name: 🧪 Check tests are passing
         run: |
           pip install poetry nox
