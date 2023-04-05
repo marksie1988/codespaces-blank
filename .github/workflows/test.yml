@@ -19,7 +19,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run containers
-        run: docker-compose -f .ci/docker-compose.yml up
+        run: docker-compose -f .ci/docker-compose.yml up -d
+      - name: check ports
+        run: docker-compose ps
+      - name: curl
+        run: curl http://localhost:7878
 
       - name: Inspect container
         run: docker inspect sonarr
