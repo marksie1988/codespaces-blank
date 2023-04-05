@@ -20,6 +20,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run containers
         run: docker-compose -f .ci/docker-compose.yml up -d
+      - name: Sleep for 1 min
+        run: sleep 60s
+        shell: bash
       - name: check ports
         run: docker ps
       - name: curl
