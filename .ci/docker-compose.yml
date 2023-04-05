@@ -8,7 +8,7 @@ services:
     environment:
       - TZ=Europe/London
     volumes:
-      - ./tests/docker_configs/sonarr/:/config:rw
+      - tests/docker_configs/sonarr:/config:rw
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
     environment:
       - TZ=Europe/London
     volumes:
-      - ./tests/docker_configs/radarr/:/config:rw
+      - tests/docker_configs/radarr:/config:rw
     ports:
       - 7878:7878
     restart: unless-stopped
