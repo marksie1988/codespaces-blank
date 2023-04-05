@@ -25,12 +25,13 @@ jobs:
         shell: bash
       - name: Add hosts
         run: |
-          sudo echo "127.0.0.1 sonarr readarr radarr" | sudo tee -a /etc/hosts
+          sudo echo "127.0.0.1 sonarr readarr radarr lidarr prowlarr deluge jackett" | sudo tee -a /etc/hosts
       - name: check ports
         run: docker ps
       - name: curl
         run: curl http://radarr:7878
-
+      - name: check api key
+        run: docker compose exec -T radarr cat config/config.yml
       - name: Inspect container
         run: docker inspect radarr
       - name: 🧪 Check tests are passing
