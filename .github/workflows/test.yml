@@ -19,10 +19,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run containers
-        run: docker-compose -f .ci/docker-compose.yml up
+        run: docker-compose -f .ci/docker-compose.yml up -d
+      -  name: Check folder
+        run: pwd
+      -  name: Check files
+        run: ls -ltr
       - name: Inspect container
         run: docker inspect sonarr
       - name: 🧪 Check tests are passing
         run: |
           pip install poetry nox
           nox -s test
+
+
