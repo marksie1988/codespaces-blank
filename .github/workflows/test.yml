@@ -31,7 +31,7 @@ jobs:
       - name: curl
         run: curl http://radarr:7878
       - name: check api key
-        run: docker compose exec -T radarr ls -l 
+        run: docker compose exec -f .ci/docker-compose.yml -T radarr ls -l
       - name: check local config
         run: cat tests/docker_configs/radarr/config.xml
       - name: Inspect container
