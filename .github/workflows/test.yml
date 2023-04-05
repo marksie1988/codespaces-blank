@@ -23,6 +23,9 @@ jobs:
       - name: Sleep for 1 min
         run: sleep 60s
         shell: bash
+      - name: Add hosts
+        run: |
+          sudo echo "127.0.0.1 sonarr readarr radarr" | sudo tee -a /etc/hosts
       - name: check ports
         run: docker ps
       - name: curl
