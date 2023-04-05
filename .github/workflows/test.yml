@@ -26,7 +26,7 @@ jobs:
       - name: check ports
         run: docker ps
       - name: curl
-        run: curl http://localhost:7878
+        run: curl http://sonarr:7878
 
       - name: Inspect container
         run: docker inspect sonarr
