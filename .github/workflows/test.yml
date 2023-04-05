@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  code-quality:
+
+    name: 📊 Check code quality
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run containers
+        run: docker-compose -f .ci/docker-compose.yml up -d
+      - name: Inspect container
+        run: docker inspect sonarr
+      - name: Start shell in container
+        run: docker exec -it sonarr ls -l /config/config.xml
+      - name: 🧪 Check tests are passing
+        run: |
+          pip install poetry nox
+          nox -s test
