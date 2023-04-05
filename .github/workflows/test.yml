@@ -21,7 +21,7 @@ jobs:
       - name: Run containers
         run: docker-compose -f .ci/docker-compose.yml up -d
       - name: check ports
-        run: docker-compose ps
+        run: docker ps
       - name: curl
         run: curl http://localhost:7878
 
