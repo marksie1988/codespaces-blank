@@ -31,7 +31,9 @@ jobs:
       - name: curl
         run: curl http://radarr:7878
       - name: check api key
-        run: docker compose exec -T radarr cat config/config.yml
+        run: docker compose exec -T radarr cat config/config.xml
+      - name: check local config
+        run: cat tests/docker_configs/radarr/config.xml
       - name: Inspect container
         run: docker inspect radarr
       - name: 🧪 Check tests are passing
