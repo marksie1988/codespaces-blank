@@ -38,6 +38,8 @@ jobs:
         run: ls tests/docker_configs/radarr/
       - name: check local config
         run: cat tests/docker_configs/radarr/config.xml
+      - name: get IDs
+        run: id
       - name: Inspect container
         run: docker inspect radarr
       - name: 🧪 Check tests are passing
