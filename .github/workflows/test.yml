@@ -28,6 +28,8 @@ jobs:
           sudo echo "127.0.0.1 sonarr readarr radarr lidarr prowlarr deluge jackett" | sudo tee -a /etc/hosts
       - name: check ports
         run: docker ps
+      - name: check logs
+        run: docker logs radarr
       - name: curl
         run: curl http://radarr:7878
       - name: check api key
