@@ -29,19 +29,13 @@ jobs:
       - name: check ports
         run: docker ps
       - name: check logs
-        run: docker logs radarr
+        run: docker logs sonarr
       - name: curl
-        run: curl http://radarr:7878
+        run: curl http://sonarr:8989
       - name: check api key
-        run: docker exec radarr cat config/config.xml
-      - name: check local dir
-        run: ls tests/docker_configs/radarr/
+        run: docker exec sonarr cat config/config.xml
       - name: check local config
-        run: cat tests/docker_configs/radarr/config.xml
-      - name: docker ids
-        run: docker exec radarr id
-      - name: get IDs
-        run: id
+        run: cat tests/docker_configs/sonarr/config.xml
       - name: Inspect container
         run: docker inspect radarr
       - name: 🧪 Check tests are passing
